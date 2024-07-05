@@ -21,7 +21,7 @@ describe('Teste de requests',()=>{
 
     it('Retorna boa tarde',async()=>{
         const originalDate = Date;
-        const mockDate=new Date("2024-07-05T15:42:51.522Z");
+        global.Date=jest.fn(()=> new originalDate("2024-07-05T15:42:51.522Z"));
         const response= await request(app).get('/hora-atual');
         expect(response.body).toBe("Boa tarde");
     });
